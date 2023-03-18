@@ -1,0 +1,12 @@
+POST http://localhost:8080/book?title=zażółć gęślą jaźń&description=jakiś opis&rating=5&publisherName=Helion
+
+###
+
+GET http://localhost:8080/book/1
+
+###
+
+PUT http://localhost:8080/book/1?title=zażółć gęślą jaźń123&description=jakiś opis123&rating=3
+
+###
+DELETE http://localhost:8080/book/1

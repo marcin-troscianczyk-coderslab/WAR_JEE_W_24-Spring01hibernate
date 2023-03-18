@@ -13,7 +13,7 @@ import javax.persistence.EntityManagerFactory;
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages = "pl.coderslab")
-//@EnableTransactionManagement
+@EnableTransactionManagement
 public class AppConfiguration {
 
     @Bean
@@ -27,11 +27,11 @@ public class AppConfiguration {
         return entityManagerFactoryBean;
     }
 
-    /*@Bean
+    @Bean
     public JpaTransactionManager transactionManager(EntityManagerFactory entityManagerFactory) {
         JpaTransactionManager jpaTransactionManager =
                 new JpaTransactionManager(entityManagerFactory);
         return jpaTransactionManager;
-    }*/
+    }
 
 }
