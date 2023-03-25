@@ -2,7 +2,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
-    <title>Add book</title>
+    <title>Edit book</title>
     <style>
         .error {
             color: red;
@@ -11,7 +11,7 @@
 </head>
 <body>
 
-<h3>Add book</h3>
+<h3>Edit book</h3>
 
 <form:form method="post" modelAttribute="book">
 
@@ -23,6 +23,7 @@
     <div>Authors: <form:select path="authors" items="${authors}" itemLabel="fullName" itemValue="id"
                                multiple="true"/><form:errors path="authors" cssClass="error"/></div>
     <div>Pages: <form:input path="pages" type="number" min="1" placeholder="Podaj liczbę stron"/><form:errors path="pages" cssClass="error"/></div>
+    <form:hidden path="id"/>
     <input type="submit" value="Add book">
 </form:form>
 

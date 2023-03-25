@@ -33,7 +33,6 @@ public class Book {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Setter(AccessLevel.NONE)
     private Long id;
 
     @Size(min = 10, message = "{title.too.short.error}")

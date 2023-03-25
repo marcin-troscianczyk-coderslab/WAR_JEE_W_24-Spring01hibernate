@@ -21,7 +21,11 @@ public class BookDao {
     }
 
     public Book findById(Long id) {
-        return entityManager.find(Book.class, id);
+        //return entityManager.find(Book.class, id);
+        Query query =
+                entityManager.createQuery("select distinct b from Book b left join fetch b.publisher left join fetch b.authors where b.id = :id");
+        query.setParameter("id", id);
+        return (Book) query.getSingleResult();
     }
 
     public List<Book> findAll() {

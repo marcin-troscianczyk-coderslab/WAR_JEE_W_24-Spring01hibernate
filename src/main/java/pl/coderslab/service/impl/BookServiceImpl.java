@@ -1,5 +1,6 @@
 package pl.coderslab.service.impl;
 
+import org.hibernate.Hibernate;
 import org.springframework.stereotype.Service;
 import pl.coderslab.dao.BookDao;
 import pl.coderslab.entity.Author;
@@ -36,6 +37,9 @@ public class BookServiceImpl implements BookService {
     @Override
     public Book findById(Long id) {
         return bookDao.findById(id);
+        //Hibernate.initialize(book.getPublisher());
+        //Hibernate.initialize(book.getAuthors());
+        //return book;
     }
 
     @Override
