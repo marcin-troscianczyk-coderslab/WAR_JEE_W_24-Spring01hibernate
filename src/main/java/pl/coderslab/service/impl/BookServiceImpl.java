@@ -10,7 +10,6 @@ import pl.coderslab.service.BookService;
 import pl.coderslab.service.PublisherService;
 
 import javax.transaction.Transactional;
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -31,34 +30,7 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public void save(Book book) {
-
-        final Publisher publisher = book.getPublisher();
-        publisherService.save(publisher);
-
-        List<Author> authors = new ArrayList<>();
-        authors.add(authorService.findById(1l));
-        authors.add(authorService.findById(2l));
-        //book.setAuthors(authors);
-
         bookDao.save(book);
-    }
-
-    @Override
-    public void save(pl.coderslab.model.Book book) {
-
-        Book bookEntity = new Book();
-        bookEntity.setTitle(book.getTitle());
-        bookEntity.setDescription(book.getDescription());
-        bookEntity.setRating(book.getRating());
-
-        Publisher publisher = new Publisher();
-        publisher.setId(book.getPublisher().getId());
-
-        bookEntity.setPublisher(publisher);
-
-        bookDao.save(bookEntity);
-
-        book.setId(bookEntity.getId());
     }
 
     @Override
