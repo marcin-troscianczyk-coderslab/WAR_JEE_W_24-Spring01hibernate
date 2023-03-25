@@ -1,6 +1,7 @@
 package pl.coderslab.entity;
 
 import lombok.AccessLevel;
+import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -14,6 +15,7 @@ import javax.persistence.Table;
 @Table(name = "authors")
 @ToString
 @Setter
+@Getter
 public class Author {
 
     @Id
@@ -22,4 +24,8 @@ public class Author {
 
     private String firstName;
     private String lastName;
+
+    public String getFullName() {
+        return firstName + " " + lastName;
+    }
 }

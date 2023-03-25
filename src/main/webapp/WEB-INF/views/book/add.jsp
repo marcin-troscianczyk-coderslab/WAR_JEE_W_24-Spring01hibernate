@@ -14,6 +14,7 @@
     Description: <form:input path="description"/>
     Rating: <form:input path="rating" type="number"/>
     Publisher: <form:select path="publisher.id" items="${publishers}" itemLabel="name" itemValue="id"/>
+    Authors: <form:select path="authors" items="${authors}" itemLabel="fullName" itemValue="id" multiple="true"/>
     <input type="submit" value="Add book">
 </form:form>
 
