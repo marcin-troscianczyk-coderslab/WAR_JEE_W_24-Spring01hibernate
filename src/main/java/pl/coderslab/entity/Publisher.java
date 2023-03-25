@@ -4,6 +4,8 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.hibernate.validator.constraints.pl.NIP;
+import org.hibernate.validator.constraints.pl.REGON;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -31,4 +33,9 @@ public class Publisher {
     @Setter(AccessLevel.NONE)
     @Getter(AccessLevel.NONE)
     private List<Book> books = new ArrayList<>();
+
+    @NIP
+    private String nip;
+    @REGON
+    private String regon;
 }
