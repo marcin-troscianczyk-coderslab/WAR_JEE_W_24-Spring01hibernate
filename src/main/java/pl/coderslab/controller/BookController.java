@@ -7,10 +7,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import pl.coderslab.entity.Author;
 import pl.coderslab.entity.Book;
 import pl.coderslab.entity.Publisher;
 import pl.coderslab.service.BookService;
 
+import java.util.List;
 import java.util.Objects;
 
 @RestController
@@ -47,6 +49,46 @@ class BookController {
         final Book book = bookService.findById(id);
 
         return Objects.nonNull(book) ? book.toString() : "Nie znaleziono książki o podanym id " + id;
+    }
+
+    @GetMapping(path = "/books", produces = "text/plain;charset=utf-8")
+    String findAll() {
+
+        final List<Book> books = bookService.findAll();
+
+        return books.toString();
+    }
+
+    @GetMapping(path = "/books", produces = "text/plain;charset=utf-8", params = "rating")
+    String findAllByRating(@RequestParam int rating) {
+
+        final List<Book> books = bookService.findAllByRating(rating);
+
+        return books.toString();
+    }
+
+    @GetMapping(path = "/books/publisher", produces = "text/plain;charset=utf-8")
+    String findAllByPublisherIsNull() {
+
+        final List<Book> books = bookService.findByPublisherIsNotNull();
+
+        return books.toString();
+    }
+
+    @GetMapping(path = "/books/publisher", produces = "text/plain;charset=utf-8", params = "id")
+    String findAllByPublisher(Publisher publisher) {
+
+        final List<Book> books = bookService.findByPublisher(publisher);
+
+        return books.toString();
+    }
+
+    @GetMapping(path = "/books/author", produces = "text/plain;charset=utf-8", params = "id")
+    String findAllByAuthor(Author author) {
+
+        final List<Book> books = bookService.findByAuthor(author);
+
+        return books.toString();
     }
 
     // update book

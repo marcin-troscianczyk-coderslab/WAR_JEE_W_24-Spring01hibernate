@@ -1,35 +1,17 @@
 package pl.coderslab.service;
 
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-import pl.coderslab.dao.AuthorDao;
 import pl.coderslab.entity.Author;
 
+import java.util.List;
 
+public interface AuthorService {
+    void save(Author author);
 
-@Service
-@Transactional
-public class AuthorService {
+    Author findById(Long authorId);
 
-    private final AuthorDao authorDao;
+    List<Author> findAll();
 
-    public AuthorService(AuthorDao authorDao) {
-        this.authorDao = authorDao;
-    }
+    void update(Author author);
 
-    public void save(Author author) {
-        authorDao.save(author);
-    }
-
-    public Author findById(Long authorId) {
-        return authorDao.findById(authorId);
-    }
-
-    public void update(Author author) {
-        authorDao.update(author);
-    }
-
-    public void deleteById(Long authorId) {
-        authorDao.deleteById(authorId);
-    }
+    void deleteById(Long authorId);
 }

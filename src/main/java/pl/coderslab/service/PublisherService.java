@@ -1,33 +1,18 @@
 package pl.coderslab.service;
 
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-import pl.coderslab.dao.PublisherDao;
 import pl.coderslab.entity.Publisher;
 
-@Service
-@Transactional
-public class PublisherService {
+import java.util.List;
 
-    private final PublisherDao publisherDao;
+public interface PublisherService {
+    void save(Publisher publisher);
 
-    public PublisherService(PublisherDao publisherDao) {
-        this.publisherDao = publisherDao;
-    }
+    Publisher findById(Long id);
 
-    public void save(Publisher publisher) {
-        publisherDao.save(publisher);
-    }
+    List<Publisher> findAll();
+    List<pl.coderslab.model.Publisher> findAllPublisherModel();
 
-    public Publisher findById(Long id) {
-        return publisherDao.findById(id);
-    }
+    void update(Publisher publisher);
 
-    public void update(Publisher publisher) {
-        publisherDao.update(publisher);
-    }
-
-    public void deleteById(Long id) {
-        publisherDao.deleteById(id);
-    }
+    void deleteById(Long id);
 }

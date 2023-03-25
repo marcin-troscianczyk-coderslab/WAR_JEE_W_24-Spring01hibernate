@@ -1,6 +1,12 @@
 package pl.coderslab.controller;
 
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import pl.coderslab.entity.Publisher;
 import pl.coderslab.service.PublisherService;
 
@@ -32,6 +38,15 @@ class PublisherController {
         Publisher publisher = publisherService.findById(id);
 
         return Objects.nonNull(publisher) ? publisher.toString() : "Nie znaleziono wydawcy o podanym id " + id;
+    }
+
+    // gets all publishers
+    @GetMapping(path = "/publishers", produces = "text/plain;charset=utf-8")
+    String findAll() {
+
+        final List<Publisher> publishers = publisherService.findAll();
+
+        return publishers.toString();
     }
 
     @PutMapping(path = "/publisher/{id}")

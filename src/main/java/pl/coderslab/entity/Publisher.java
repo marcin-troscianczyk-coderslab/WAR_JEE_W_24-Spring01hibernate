@@ -1,5 +1,10 @@
 package pl.coderslab.entity;
 
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,6 +16,9 @@ import java.util.List;
 
 @Entity
 @Table(name = "publishers")
+@ToString(exclude = "books")
+@Setter
+@Getter
 public class Publisher {
 
     @Id
@@ -19,10 +27,8 @@ public class Publisher {
 
     private String name;
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     @OneToMany(mappedBy = "publisher")
+    @Setter(AccessLevel.NONE)
+    @Getter(AccessLevel.NONE)
     private List<Book> books = new ArrayList<>();
 }

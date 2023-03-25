@@ -5,8 +5,22 @@ POST http://localhost:8080/book?title=zażółć gęślą jaźń&description=jak
 GET http://localhost:8080/book/1
 
 ###
+GET http://localhost:8080/books
+
+###
+
+GET http://localhost:8080/books?rating=2
+
+###
+GET http://localhost:8080/books/publisher
+
+###
+GET http://localhost:8080/books/publisher?id=2
+###
+GET http://localhost:8080/books/author?id=2
+###
 
 PUT http://localhost:8080/book/1?title=zażółć gęślą jaźń123&description=jakiś opis123&rating=3
 
 ###
-DELETE http://localhost:8080/book/1
+DELETE http://localhost:8080/book/2
